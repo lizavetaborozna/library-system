@@ -30,10 +30,8 @@ public class BookController {
 
     @GetMapping("/add")
     public String addBook(Model model) {
-        model.addAttribute("book", new Book());
-        model.addAttribute("bookGenre", Genre.values());
-        model.addAttribute("bookAuthor", authorRepository.findAll());
-        return "bookForm";
+        setBookModelAttributes(new Book(), model);
+        return "book/bookForm";
     }
 
     @PostMapping("/save")
@@ -46,5 +44,19 @@ public class BookController {
     public String deleteBook(@PathVariable Long id) {
         bookRepository.deleteById(id);
         return "redirect:/books";
+    }
+
+    @GetMapping("/update/{id}")
+    public String updateBook(@PathVariable Long id, Model model) {
+        if (bookRepository.findById(id).isPresent()) {
+            setBookModelAttributes(bookRepository.findById(id).get(), model);
+        }
+        return "book/updateBookForm";
+    }
+
+    private void setBookModelAttributes(Book book, Model model) {
+        model.addAttribute("book", book);
+        model.addAttribute("bookGenre", Genre.values());
+        model.addAttribute("bookAuthor", authorRepository.findAll());
     }
 }

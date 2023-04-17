@@ -16,22 +16,27 @@
     <h2>Add book</h2>
     <form action="#" th:action="@{/books/save}" th:object="${book}" method="post">
         <input type="text" th:field="*{name}" placeholder="Book name" class="form-control mb-4 col-4">
-        <label>Select book author:</label>
-        <select class="form-control mb-4 col-4" th:field="*{author}">
-            <div th:each="author : ${bookAuthor}">
-                <option th:text="${author.name}" th:value="${author.id}"></option>
-            </div>
-        </select>
-        <label>Select book genre:</label>
-        <select class="form-control mb-4 col-4" th:field="*{genre}">
-            <div th:each="genre : ${bookGenre}">
-                <option th:text="${genre}" th:value="${genre}"></option>
-            </div>
-        </select>
-
+        <div>
+            <label>Select book author:</label>
+            <select class="form-control mb-4 col-4" th:field="*{author}">
+                <div th:each="author : ${bookAuthor}">
+                    <option th:text="${author.name}" th:value="${author.id}"></option>
+                </div>
+            </select>
+            <a th:href="@{/authors/add}">I wanna create author</a>
+        </div>
+        <br>
+        <div>
+            <label>Select book genre:</label>
+            <select class="form-control mb-4 col-4" th:field="*{genre}">
+                <div th:each="genre : ${bookGenre}">
+                    <option th:text="${genre}" th:value="${genre}"></option>
+                </div>
+            </select>
+        </div>
         <button type="submit" class="btn btn-info col-2">Save book</button>
     </form>
-
+    <br>
     <a th:href="@{/books}">Back to book list</a>
 </div>
 </body>

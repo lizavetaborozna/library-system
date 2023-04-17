@@ -32,7 +32,7 @@ public class Book {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", genre=" + genre +
-                ", author=" + author +
+                ", author=" + author.getId() + author.getName() +
                 '}';
     }
 }

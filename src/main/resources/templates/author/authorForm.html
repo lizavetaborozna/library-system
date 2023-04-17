@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new author</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2">
+    <h1>Library System</h1>
+    <hr>
+    <h2>Add author</h2>
+    <form action="#" th:action="@{/authors/save}" th:object="${author}" method="post">
+        <input type="text" th:field="*{name}" placeholder="Author name" class="form-control mb-4 col-4">
+        <button type="submit" class="btn btn-info col-2">Save author</button>
+    </form>
+    <br>
+    <a th:href="@{/authors}">Back to author list</a>
+</div>
+</body>
+</html>
