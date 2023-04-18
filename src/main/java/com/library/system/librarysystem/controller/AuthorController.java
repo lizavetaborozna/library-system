@@ -48,4 +48,12 @@ public class AuthorController {
         }
         return "author/updateAuthorForm";
     }
+
+    @GetMapping("/{id}")
+    public String getAuthorInfo(@PathVariable Long id, Model model) {
+        if (authorRepository.findById(id).isPresent()) {
+            model.addAttribute("author", authorRepository.findById(id).get());
+        }
+        return "author/authorInfo";
+    }
 }

@@ -54,6 +54,14 @@ public class BookController {
         return "book/updateBookForm";
     }
 
+    @GetMapping("/{id}")
+    public String getBookInfo(@PathVariable Long id, Model model) {
+        if (bookRepository.findById(id).isPresent()) {
+            model.addAttribute("book", bookRepository.findById(id).get());
+        }
+        return "book/bookInfo";
+    }
+
     private void setBookModelAttributes(Book book, Model model) {
         model.addAttribute("book", book);
         model.addAttribute("bookGenre", Genre.values());

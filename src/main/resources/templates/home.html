@@ -25,8 +25,8 @@
         </thead>
         <tbody>
         <tr th:each=" book :${listOfBooks}">
-            <th th:text="${book.name}"></th>
-            <th th:text="${book.author.name}"></th>
+            <th><a th:href="@{/books/{id}(id=${book.id})}" th:text="${book.name}"></a></th>
+            <th><a th:href="@{/authors/{id}(id=${book.author.id})}" th:text="${book.author.name}"></a></th>
             <th th:text="${book.genre}"></th>
             <th><a th:href="@{/books/update/{id}(id=${book.id})}" class="btn btn-primary">Update</a></th>
             <th><a th:href="@{/books/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></th>

@@ -22,7 +22,7 @@
         </thead>
         <tbody>
         <tr th:each=" author :${listOfAuthors}">
-            <th th:text="${author.name}"></th>
+            <th><a th:href="@{/authors/{id}(id=${author.id})}" th:text="${author.name}"></a></th>
             <th><a th:href="@{/authors/update/{id}(id=${author.id})}" class="btn btn-primary">Update</a></th>
             <th><a th:href="@{/authors/delete/{id}(id=${author.id})}" class="btn btn-danger">Delete</a></th>
         </tr>
